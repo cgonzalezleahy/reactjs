@@ -2,6 +2,8 @@ import {React, useState} from 'react';
 import "./App.css";
 import Navbar from './NavBar';
 import ItemListContainer from './ItemListContainer/ItemListContainer';
+import Productos from './Productos';
+
 
 const [cont, setCont]  = useState(0); 
 
@@ -21,7 +23,7 @@ function saludar() {
 
 const App = () => {
     return (
-        <div>
+        <>
             <Navbar/>
             <ItemListContainer texto ="Catalina"/>
             <p>
@@ -33,7 +35,8 @@ const App = () => {
             <button className='btn bnt-secondary' onClick={() => contador ("-")}>
                 -
             </button >
-        </div>
+            <Productos/>
+        </>
     );
 }
 
