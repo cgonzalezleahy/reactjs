@@ -1,10 +1,10 @@
 import {React, useState, useEffect} from 'react';
 
 const productos = [
-    {nombre: "Torta Oreo", numero: 1, precio:3000, stock: 10 },
-    {nombre: "Chocoreo", numero: 2 , precio:2900, stock: 5},
-    {nombre: "Marquise Clásica", numero: 6, precio:2800, stock: 5},
-    {nombre: "Marquise Frutillas", numero: 8, precio:3700, stock: 2}
+    {id:1,nombre: "Torta Oreo", precio:3000, stock: 10 },
+    {id: 2 ,nombre: "Chocoreo",  precio:2900, stock: 5},
+    {id: 6,nombre: "Marquise Clásica", precio:2800, stock: 5},
+    {id: 8,nombre: "Marquise Frutillas", precio:3700, stock: 2}
 ]
 
 function consultarPromesa(confirmacion) {
@@ -23,24 +23,33 @@ const Productos = () => {
 
     const [productos, setProductos] = useState([]);
 
-
-    consultarPromesa(true)
+    useEffect(() => {
+        consultarPromesa(true)
     .then(data => {
         const productosJSX = data.map((producto, indice) => {
-            
+
+            <div className="card border-primary mb-3" id={indice} style={{maxWidth: '15rem', margin: "5px"}}>
+            <div className="card-header">{producto.nombre}</div>
+            <div className="card-body">
+              <h4 className="card-title">Precio: ${producto.precio}</h4>
+              <p className="card-text">Stock: {producto.stock}</p>
+            </div>
+          </div>
+          
+
         }) 
-        setProductos(data)
+        setProductos(productosJSX)
+        console.log(productos) 
     })
     .catch(error => {
         console.error(error)
     })
-    
-    console.log(productos) 
+    }, [input]);   
 
     return (
-        <>
+        <div className="row">
             {productos}
-        </>
+        </div>
     );
 }
 
