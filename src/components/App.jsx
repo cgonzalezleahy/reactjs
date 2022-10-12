@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from './NavBar';
 import ItemListContainer from './ItemListContainer/ItemListContainer';
 import Productos from './Productos';
+import Dolar from './Dolar';
 
 
 const [cont, setCont]  = useState(0); 
@@ -36,8 +37,10 @@ const App = () => {
                 -
             </button >
             <Productos/>
+            <Dolar/>
         </>
     );
 }
+
 
 export default App;
